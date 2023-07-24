@@ -1,0 +1,43 @@
+<div style="text-align:center">
+    
+    <div class="container">
+      <div class="col-md-6 mx-auto">
+        <div class="form-area"> 
+          <form role="form">
+              <h1 class="well">
+                  Feedback
+                </h1>
+            <br style="clear:both">
+            <h3 style="margin-bottom: 25px; text-align: left;">Feedback Form</h3>
+            <div class="form-group">     
+              <label for="username" class="float-left form-label text-left">User*</label>
+              <div class="float-left form-input-wrapper">
+              <input type="email" class="form-control" id="username" name="username" placeholder="UserName" [(ngModel)]="data.username" required>
+            </div>
+            </div>
+            <div class="form-group">
+                <label for="date" class="float-left form-label text-left">Date*</label>
+                <div class="float-left form-input-wrapper">
+                    <input type="text" class="form-control" id="commentDate" name="commentDate" placeholder="commentDate" [(ngModel)]="data.commentDate" required>
+                    </div>
+            </div>
+                <div class="form-group">
+                <label for="rating" class="float-left form-label text-left">Rating*</label>
+                <div class="float-left form-input-wrapper">
+                    <input type="text" class="form-control" id="rating" name="rating" placeholder="Rating" [(ngModel)]="data.rating" required>
+                    </div>
+            </div>
+            <div class="form-group">
+                <label for="comment" class="float-left form-label text-left">Comment*</label>
+                <div class="float-left form-input-wrapper">
+                    <textarea class="form-control" type="comment" id="comment" name="comment" placeholder="Comment" [(ngModel)]="data.comment" maxlength="140" rows="7"></textarea>              
+            </div>
+                  </div>
+            <button type="button" id="submit" name="submit" class="btn btn-primary pull-left mr-3" (click)="save()">Submit</button>
+            <button type="button" id="cancel" name="cancel" class="btn btn-primary pull-left" (click)="cancel()">Cancel</button>
+            
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
