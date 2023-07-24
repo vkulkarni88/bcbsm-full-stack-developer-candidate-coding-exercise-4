@@ -2,11 +2,11 @@ package com.feedback.springjwt.security.services;
 
 import java.util.List;
 
-import com.feedback.springjwt.models.Comments;
+import com.feedback.springjwt.models.FeedBackComment;
 
 
 public interface CommentsService {
 
-	public List<Comments> findAll();
+	public List<FeedBackComment> findAll();
 
 }
