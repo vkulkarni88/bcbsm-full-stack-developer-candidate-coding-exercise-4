@@ -24,8 +24,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.feedback.springjwt.models.ERole;
+import com.feedback.springjwt.models.FeedBackComment;
 import com.feedback.springjwt.models.Role;
 import com.feedback.springjwt.models.User;
+import com.feedback.springjwt.payload.request.CommentRequest;
 import com.feedback.springjwt.payload.request.LoginRequest;
 import com.feedback.springjwt.payload.request.SignupRequest;
 import com.feedback.springjwt.payload.response.JwtResponse;
@@ -76,7 +78,7 @@ public class AuthController {
         .map(item -> item.getAuthority())
         .collect(Collectors.toList());
     
-    Optional<com.feedback.springjwt.models.Comments> comments = commentsRepository.findById(userDetails.getId());
+    Optional<FeedBackComment> comments = commentsRepository.findById(userDetails.getId());
 
     return ResponseEntity.ok(new JwtResponse(jwt, 
                          userDetails.getId(), 
@@ -87,7 +89,8 @@ public class AuthController {
   }
   
 	@GetMapping("/admin")
-	public List<com.feedback.springjwt.models.Comments> findAllUser() {
+	public List<FeedBackComment> findAllUser() {
+
 		return this.commentsService.findAll();
 	}
 
@@ -138,5 +141,19 @@ public class AuthController {
     userRepository.save(user);
 
     return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+  }
+  
+  @PostMapping("/saveComment")
+  public ResponseEntity<?> saveComment(@Valid @RequestBody CommentRequest commentRequest) {
+
+    // Create new user's account
+	  FeedBackComment user = new FeedBackComment(commentRequest.getUsername(), 
+			  commentRequest.getCommentdate(),
+			  commentRequest.getRating(),
+			  commentRequest.getComment());
+
+	  commentsRepository.save(user);
+
+    return ResponseEntity.ok(new MessageResponse("User Comment saved successfully!"));
   }
 }
