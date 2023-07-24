@@ -31,7 +31,7 @@ export class AppComponent {
     if(error === false) {
     console.log(this.data);
                 //add request to send email or into mysql
-                this.http.post<any>("http://localhost:8095/rest/Feedbackform/register/", this.data).subscribe(
+                this.http.post<any>("http://localhost:8095/rest/saveComment/", this.data).subscribe(
         res => {
           console.log(res);
       },
