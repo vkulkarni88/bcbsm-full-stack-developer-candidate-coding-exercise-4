@@ -42,7 +42,7 @@ public class User {
   @JoinTable(  name = "user_comments", 
         joinColumns = @JoinColumn(name = "user_id"), 
         inverseJoinColumns = @JoinColumn(name = "comment_id"))
-  private Set<Comments> comments = new HashSet<>();
+  private Set<FeedBackComment> comments = new HashSet<>();
 
   public User() {
   }
@@ -97,7 +97,7 @@ public class User {
     return roles;
   }
 
-  public void setComment(Set<Comments> comments) {
+  public void setComment(Set<FeedBackComment> comments) {
     this.comments = comments;
   }
 }
