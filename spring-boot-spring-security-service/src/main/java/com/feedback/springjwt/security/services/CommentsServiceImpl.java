@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.feedback.springjwt.models.Comments;
+import com.feedback.springjwt.models.FeedBackComment;
 import com.feedback.springjwt.repository.CommentRepository;
 
 public class CommentsServiceImpl implements CommentsService {
@@ -13,7 +13,7 @@ public class CommentsServiceImpl implements CommentsService {
 	  private CommentRepository commentRepository;
 	
 	@Override
-	public List<Comments> findAll() {
+	public List<FeedBackComment> findAll() {
 		// TODO Auto-generated method stub
 		 return this.commentRepository.findAll();
 	}
